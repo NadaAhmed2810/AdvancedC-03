@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Security.Principal;
 
 namespace AdvancedC_03
 {
@@ -10,7 +11,9 @@ namespace AdvancedC_03
     // this Function Must Has The same Signature of the Delegate 
     //Regardless Function Access Modifier  and Regardless Naming [Function Name and Parameters]
 
-
+    public delegate bool CustomFunc<T>(T arg1,T arg2);
+    
+  
     internal class Program
     {
         static void Main(string[] args)
@@ -24,20 +27,30 @@ namespace AdvancedC_03
 
             #endregion
             #region Delegate Example01
-           // //step 1. Declare Delegate Reference
-           // CustomFunc reference;
-           // //step 2. initialize the delegate reference;
-           //// reference = new CustomFunc(StringHelper.GetCountOfUpperCaseChars);
-           // reference = StringHelper.GetCountOfUpperCaseChars;//Syntax Sugar
-           // reference += StringHelper.GetCountOfLowerCaseChars;
-           // reference -= StringHelper.GetCountOfUpperCaseChars;
-           // // step 3. Use the Reference delegate
-           // //  reference.Invoke("Nada AHmed");
-           // int Result=reference("Nada AHmed");//syntax Sugar
-           // Console.WriteLine($"Result:{Result}");
+            // //step 1. Declare Delegate Reference
+            // CustomFunc reference;
+            // //step 2. initialize the delegate reference;
+            //// reference = new CustomFunc(StringHelper.GetCountOfUpperCaseChars);
+            // reference = StringHelper.GetCountOfUpperCaseChars;//Syntax Sugar
+            // reference += StringHelper.GetCountOfLowerCaseChars;
+            // reference -= StringHelper.GetCountOfUpperCaseChars;
+            // // step 3. Use the Reference delegate
+            // //  reference.Invoke("Nada AHmed");
+            // int Result=reference("Nada AHmed");//syntax Sugar
+            // Console.WriteLine($"Result:{Result}");
 
 
 
+            #endregion
+            #region Delegate Example02
+            //int[] Numbers = [2, 8, 7, 1, 4, 3, 10, 9, 5, 6];
+            ////SortingAlgorithms.BubbleSort(Numbers,new AscComparer());
+            //CustomFunc<int> func = SortingTypes.ComparerGRT;
+            //Numbers.BubbleSort(func);
+            //for (int i = 0; i < Numbers.Length; i++)
+            //{
+            //    Console.WriteLine(Numbers[i]);
+            //}
             #endregion
         }
     }
@@ -69,5 +82,55 @@ namespace AdvancedC_03
             }
             return count;
         }
+    }
+    static class  SortingAlgorithms
+    {
+        //public static void BubbleSort(this int[] array,CustomComparer customComparer)
+        public static void BubbleSort(this int[] array,CustomFunc<int> func)
+        {
+            if(array != null && func !=null)
+            {
+                for(int i = 0; i < array.Length; i++)
+                {
+                    for(int j = 0; j < array.Length - 1 - i; j++)
+                    {
+                        // if(array[j] > array[j+1])
+                        //if (customComparer.Compare(array[j], array[j+1]))
+                        if (func(array[j], array[j+1]))
+                            Swap(ref array[j], ref array[j+1]);
+                        
+                    }
+                }
+            }
+        }
+        //redundancy of code 
+        //public static void BubbleSortDec(int[] array)
+        //{
+        //    if (array != null)
+        //    {
+        //        for (int i = 0; i < array.Length; i++)
+        //        {
+        //            for (int j = 0; j < array.Length - 1 - i; j++)
+        //            {
+        //                if (array[j] < array[j + 1])
+        //                {
+        //                    Swap(ref array[j], ref array[j + 1]);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+        private static void Swap(ref int x,ref  int y)
+        {
+            int temp = x;
+            x=y;
+            y=temp;
+        }
+    }
+    class SortingTypes
+    {
+        public static bool ComparerGRT(int x, int y) => x > y;
+        public static bool Comparerless(int x, int y) => x < y;
+
     }
 }
