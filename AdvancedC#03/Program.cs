@@ -141,6 +141,17 @@ namespace AdvancedC_03
             //Action<string> action = s => Console.WriteLine($"Hello ,{s}"); 
             //action.Invoke("Nada"); 
             #endregion
+
+            #region New feature at delegate using Var keyword
+            ////var Keyword =>"Implicitly Typed Local Variable [C# 2.0]
+            //var predicate =  (int x)=> x > 0;
+            //predicate.Invoke(10);
+            //var  func =  (int x) => x.ToString(); 
+            //func.Invoke(10);
+            //var action =  (string s) =>Console.WriteLine($"Hello ,{s}"); 
+            //action.Invoke("Nada"); 
+            #endregion
+
         }
     }
         class SomeFunctions
