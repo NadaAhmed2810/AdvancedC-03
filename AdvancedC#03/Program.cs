@@ -15,24 +15,24 @@ namespace AdvancedC_03
         // public delegate TResult CustomFunc<in T1, in T2, out TResult>(T1 arg1, T2 arg2);
         //public delegate bool CustomPredicate<in T>(T arg1);
 
-    internal class Program
-    {
-        public static List<T> FindElements<T>(List<T> Elements, Predicate<T> predicate)
+        internal class Program
         {
-            List<T> Result = new List<T>();
-            if (Elements is not null && predicate != null)
+            public static List<T> FindElements<T>(List<T> Elements, Predicate<T> predicate)
             {
+                List<T> Result = new List<T>();
+                if (Elements is not null && predicate != null)
                 {
-                    for (int i = 0; i < Elements.Count; i++)
                     {
-                        if (predicate.Invoke(Elements[i]))
-                            Result.Add(Elements[i]);
+                        for (int i = 0; i < Elements.Count; i++)
+                        {
+                            if (predicate.Invoke(Elements[i]))
+                                Result.Add(Elements[i]);
+                        }
                     }
-                }
                
+                }
+                return Result;
             }
-            return Result;
-        }
             static void Main(string[] args)
             {
             #region What is  Delegate
@@ -114,9 +114,25 @@ namespace AdvancedC_03
             #endregion
 
             #endregion
+            #region Built in Delegate
+            //Predicate<int> predicate=SomeFunctions.test ;
+            //predicate.Invoke(10);
+            //Func<int,string> func = SomeFunctions.Cast ;
+            //func.Invoke(10);
+            //Action<string> action=SomeFunctions.Print;
+            //action.Invoke("Nada");
+
+            #endregion
+
+            }
+        }
+        class SomeFunctions
+        {
+             public static bool test(int x)=> x > 0;
+             public static string Cast(int  x)=>x.ToString();
+             public static void Print(string s) => Console.WriteLine($"Hello ,{s}");
 
         }
-    }
         class StringHelper
         {
             public static int GetCountOfUpperCaseChars(string str)
