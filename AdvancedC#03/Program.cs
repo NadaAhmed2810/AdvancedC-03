@@ -33,8 +33,8 @@ namespace AdvancedC_03
                 }
                 return Result;
             }
-            static void Main(string[] args)
-            {
+        static void Main(string[] args)
+        {
             #region What is  Delegate
             //Delegate is a C# feature [C# 2.0 ]
             //Has a 2 Usages
@@ -150,6 +150,22 @@ namespace AdvancedC_03
             //func.Invoke(10);
             //var action =  (string s) =>Console.WriteLine($"Hello ,{s}"); 
             //action.Invoke("Nada"); 
+            #endregion
+            #region Function take delegate as paramater
+            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            ////List<int> OddNumbers = FindElements(Numbers, ConditionFunctions.IsOdd);
+            ////List<int>  OddNumbers = FindElements(Numbers, (x => x % 2 == 1));
+            //List<int> OddNumbers = Numbers.FindAll(x => x % 2 == 1);
+            //Numbers.Find(x => x % 2 == 1);//1
+            //Numbers.TrueForAll(x => x % 2 == 1);//No
+            //Numbers.FindLast(x => x % 2 == 1);//9
+            //Numbers.Exists(x => x % 2 == 1);
+            //Numbers.RemoveAll(x => x % 2 == 1);
+
+            //foreach (int number in OddNumbers)
+            //{
+            //    Console.WriteLine(number);
+            //} 
             #endregion
 
         }
