@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 
 namespace AdvancedC_03
@@ -11,7 +12,7 @@ namespace AdvancedC_03
     // this Function Must Has The same Signature of the Delegate 
     //Regardless Function Access Modifier  and Regardless Naming [Function Name and Parameters]
 
-    public delegate bool CustomFunc<T>(T arg1,T arg2);
+    public delegate TResult CustomFunc<in T1,in T2,out TResult>(T1 arg1,T2 arg2);
     
   
     internal class Program
@@ -45,11 +46,18 @@ namespace AdvancedC_03
             #region Delegate Example02
             //int[] Numbers = [2, 8, 7, 1, 4, 3, 10, 9, 5, 6];
             ////SortingAlgorithms.BubbleSort(Numbers,new AscComparer());
-            //CustomFunc<int> func = SortingTypes.ComparerGRT;
-            //Numbers.BubbleSort(func);
+            //CustomFunc<int,int,bool> func = SortingTypes.ComparerGRT;
+            //SortingAlgorithms<int>.BubbleSort(Numbers,func);
             //for (int i = 0; i < Numbers.Length; i++)
             //{
             //    Console.WriteLine(Numbers[i]);
+            //}
+            //string[] Names = ["Nada","Noura","Nour","Nadeen","Radwa","Salma","Rania","Aya","Mohammed"];
+            //CustomFunc<string, string, bool> func = SortingTypes.ComparerGRT;
+            //SortingAlgorithms<string>.BubbleSort(Names, func);
+            //for (int i = 0; i < Names.Length; i++)
+            //{
+            //    Console.WriteLine(Names[i]);
             //}
             #endregion
         }
@@ -83,10 +91,10 @@ namespace AdvancedC_03
             return count;
         }
     }
-    static class  SortingAlgorithms
+    static class  SortingAlgorithms<T>
     {
         //public static void BubbleSort(this int[] array,CustomComparer customComparer)
-        public static void BubbleSort(this int[] array,CustomFunc<int> func)
+        public static void BubbleSort( T[] array,CustomFunc<T,T,bool> func)
         {
             if(array != null && func !=null)
             {
@@ -120,9 +128,9 @@ namespace AdvancedC_03
         //        }
         //    }
         //}
-        private static void Swap(ref int x,ref  int y)
+        private static void Swap(ref T x,ref  T y)
         {
-            int temp = x;
+            T temp = x;
             x=y;
             y=temp;
         }
@@ -130,7 +138,9 @@ namespace AdvancedC_03
     class SortingTypes
     {
         public static bool ComparerGRT(int x, int y) => x > y;
-        public static bool Comparerless(int x, int y) => x < y;
+        public static bool Comparerless(int x, int  y) => x < y;
+        public static bool ComparerGRT(string x, string y) => x .CompareTo(y)==1;
+        public static bool Comparerless(string x, string y) => x .CompareTo(y)==-1;
 
     }
 }
