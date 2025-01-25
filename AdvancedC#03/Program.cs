@@ -123,9 +123,26 @@ namespace AdvancedC_03
             //action.Invoke("Nada");
 
             #endregion
-
-            }
+            #region Anonymous Function C# 2.0 Feature 
+            //Predicate<int> predicate = delegate (int x) { return x > 0; };
+            //predicate.Invoke(10);
+            //Func<int, string> func = delegate (int x) { return x.ToString(); };
+            //func.Invoke(10);
+            //Action<string> action = delegate (string s) { Console.WriteLine($"Hello ,{s}"); };
+            //action.Invoke("Nada"); 
+            #endregion
+            #region Lambda Expression C# 3.0 Feature
+            //Called {FatArrow } and read  goes to  
+            //Predicate<int> predicate = x => x > 0; 
+            //;
+            //predicate.Invoke(10);
+            //Func<int, string> func = x => x.ToString(); 
+            //func.Invoke(10);
+            //Action<string> action = s => Console.WriteLine($"Hello ,{s}"); 
+            //action.Invoke("Nada"); 
+            #endregion
         }
+    }
         class SomeFunctions
         {
              public static bool test(int x)=> x > 0;
