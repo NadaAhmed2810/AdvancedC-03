@@ -33,142 +33,147 @@ namespace AdvancedC_03
                 }
                 return Result;
             }
-        static void Main(string[] args)
-        {
-            #region What is  Delegate
-            //Delegate is a C# feature [C# 2.0 ]
-            //Has a 2 Usages
-            //1. Functional programming[function as parameter, function return function,storage function in variable]
-            //2. Event_Driven programming
-            //delegate transform to Class  in CLR 
+            public static Action DelegateDoAction()
+            {
+            return delegate { Console.WriteLine("Hello,World"); };
+            }
+            static void Main(string[] args)
+            {
+                #region What is  Delegate
+                //Delegate is a C# feature [C# 2.0 ]
+                //Has a 2 Usages
+                //1. Functional programming[function as parameter, function return function,storage function in variable]
+                //2. Event_Driven programming
+                //delegate transform to Class  in CLR 
 
-            #endregion
-            #region Delegate Example01
-            ////step 1. Declare Delegate Reference
-            //Func<string,int> reference;
-            ////step 2. initialize the delegate reference;
-            //// reference = new CustomFunc(StringHelper.GetCountOfUpperCaseChars);
-            //reference = StringHelper.GetCountOfUpperCaseChars;//Syntax Sugar
-            //reference += StringHelper.GetCountOfLowerCaseChars;
-            //reference -= StringHelper.GetCountOfUpperCaseChars;
-            //// step 3. Use the Reference delegate
-            ////  reference.Invoke("Nada AHmed");
-            //int Result = reference("Nada AHmed");//syntax Sugar
-            //Console.WriteLine($"Result:{Result}");
+                #endregion
+                #region Delegate Example01
+                ////step 1. Declare Delegate Reference
+                //Func<string,int> reference;
+                ////step 2. initialize the delegate reference;
+                //// reference = new CustomFunc(StringHelper.GetCountOfUpperCaseChars);
+                //reference = StringHelper.GetCountOfUpperCaseChars;//Syntax Sugar
+                //reference += StringHelper.GetCountOfLowerCaseChars;
+                //reference -= StringHelper.GetCountOfUpperCaseChars;
+                //// step 3. Use the Reference delegate
+                ////  reference.Invoke("Nada AHmed");
+                //int Result = reference("Nada AHmed");//syntax Sugar
+                //Console.WriteLine($"Result:{Result}");
 
 
 
-            #endregion
-            #region Delegate Example02
-            //int[] Numbers = [2, 8, 7, 1, 4, 3, 10, 9, 5, 6];
-            //SortingAlgorithms.BubbleSort(Numbers,new AscComparer());
-            //Func<int, int, bool> func = SortingTypes.ComparerGRT;
-            //SortingAlgorithms<int>.BubbleSort(Numbers, func);
-            //for (int i = 0; i < Numbers.Length; i++)
-            //{
-            //    Console.WriteLine(Numbers[i]);
-            //}
-            //string[] Names = ["Nada", "Noura", "Nour", "Nadeen", "Radwa", "Salma", "Rania", "Aya", "Mohammed"];
-            //Func<string, string, bool> func1 = SortingTypes.ComparerGRT;
-            //SortingAlgorithms<string>.BubbleSort(Names, func1);
-            //for (int i = 0; i < Names.Length; i++)
-            //{
-            //    Console.WriteLine(Names[i]);
-            //}
-            #endregion
-            #region Delegate Example03
-            //List<int> Numbers = Enumerable.Range(0, 100).ToList();
-            //Predicate<int> predicate1 = ConditionFunctions.IsOdd;
-            #region find odd
-            //List<int> OddNumbers = FindElements(Numbers, predicate1);
-            //for (int i = 0; i < OddNumbers.Count; i++)
-            //{
-            //    Console.WriteLine(OddNumbers[i]);
-            //} 
-            #endregion
+                #endregion
+                #region Delegate Example02
+                //int[] Numbers = [2, 8, 7, 1, 4, 3, 10, 9, 5, 6];
+                //SortingAlgorithms.BubbleSort(Numbers,new AscComparer());
+                //Func<int, int, bool> func = SortingTypes.ComparerGRT;
+                //SortingAlgorithms<int>.BubbleSort(Numbers, func);
+                //for (int i = 0; i < Numbers.Length; i++)
+                //{
+                //    Console.WriteLine(Numbers[i]);
+                //}
+                //string[] Names = ["Nada", "Noura", "Nour", "Nadeen", "Radwa", "Salma", "Rania", "Aya", "Mohammed"];
+                //Func<string, string, bool> func1 = SortingTypes.ComparerGRT;
+                //SortingAlgorithms<string>.BubbleSort(Names, func1);
+                //for (int i = 0; i < Names.Length; i++)
+                //{
+                //    Console.WriteLine(Names[i]);
+                //}
+                #endregion
+                #region Delegate Example03
+                //List<int> Numbers = Enumerable.Range(0, 100).ToList();
+                //Predicate<int> predicate1 = ConditionFunctions.IsOdd;
+                #region find odd
+                //List<int> OddNumbers = FindElements(Numbers, predicate1);
+                //for (int i = 0; i < OddNumbers.Count; i++)
+                //{
+                //    Console.WriteLine(OddNumbers[i]);
+                //} 
+                #endregion
 
-            #region Find Even
-            //predicate1 = ConditionFunctions.IsEven;
-            //List<int> EvenNumbers = FindElements(Numbers, predicate1);
-            //for (int i = 0; i < EvenNumbers.Count; i++)
-            //{
-            //    Console.WriteLine(EvenNumbers[i]);
-            //} 
-            #endregion
-            #region find mod 7
-            //predicate1 = ConditionFunctions.DividedBySeven;
-            //List<int> DividedByseven = FindElements(Numbers, predicate1);
-            //for (int i = 0; i < DividedByseven.Count; i++)
-            //{
-            //    Console.WriteLine(DividedByseven[i]);
-            //}
-            #endregion
-            #region string>4
-            //List<string>Names =new List<string>() { "Nada", "Nour", "Noura", "Aya", "Radwa" };
-            //Predicate<string> predicate2 = ConditionFunctions.LengthGrt4;
-            //List<string>list = FindElements(Names,predicate2).ToList();
-            //foreach (string name in list)
-            //{
-            //  Console.WriteLine(name);
-            //} 
-            #endregion
+                #region Find Even
+                //predicate1 = ConditionFunctions.IsEven;
+                //List<int> EvenNumbers = FindElements(Numbers, predicate1);
+                //for (int i = 0; i < EvenNumbers.Count; i++)
+                //{
+                //    Console.WriteLine(EvenNumbers[i]);
+                //} 
+                #endregion
+                #region find mod 7
+                //predicate1 = ConditionFunctions.DividedBySeven;
+                //List<int> DividedByseven = FindElements(Numbers, predicate1);
+                //for (int i = 0; i < DividedByseven.Count; i++)
+                //{
+                //    Console.WriteLine(DividedByseven[i]);
+                //}
+                #endregion
+                #region string>4
+                //List<string>Names =new List<string>() { "Nada", "Nour", "Noura", "Aya", "Radwa" };
+                //Predicate<string> predicate2 = ConditionFunctions.LengthGrt4;
+                //List<string>list = FindElements(Names,predicate2).ToList();
+                //foreach (string name in list)
+                //{
+                //  Console.WriteLine(name);
+                //} 
+                #endregion
 
-            #endregion
-            #region Built in Delegate
-            //Predicate<int> predicate=SomeFunctions.test ;
-            //predicate.Invoke(10);
-            //Func<int,string> func = SomeFunctions.Cast ;
-            //func.Invoke(10);
-            //Action<string> action=SomeFunctions.Print;
-            //action.Invoke("Nada");
+                #endregion
+                #region Built in Delegate
+                //Predicate<int> predicate=SomeFunctions.test ;
+                //predicate.Invoke(10);
+                //Func<int,string> func = SomeFunctions.Cast ;
+                //func.Invoke(10);
+                //Action<string> action=SomeFunctions.Print;
+                //action.Invoke("Nada");
 
-            #endregion
-            #region Anonymous Function C# 2.0 Feature 
-            //Predicate<int> predicate = delegate (int x) { return x > 0; };
-            //predicate.Invoke(10);
-            //Func<int, string> func = delegate (int x) { return x.ToString(); };
-            //func.Invoke(10);
-            //Action<string> action = delegate (string s) { Console.WriteLine($"Hello ,{s}"); };
-            //action.Invoke("Nada"); 
-            #endregion
-            #region Lambda Expression C# 3.0 Feature
-            //Called {FatArrow } and read  goes to  
-            //Predicate<int> predicate = x => x > 0; 
-            //;
-            //predicate.Invoke(10);
-            //Func<int, string> func = x => x.ToString(); 
-            //func.Invoke(10);
-            //Action<string> action = s => Console.WriteLine($"Hello ,{s}"); 
-            //action.Invoke("Nada"); 
-            #endregion
+                #endregion
+                #region Anonymous Function C# 2.0 Feature 
+                //Predicate<int> predicate = delegate (int x) { return x > 0; };
+                //predicate.Invoke(10);
+                //Func<int, string> func = delegate (int x) { return x.ToString(); };
+                //func.Invoke(10);
+                //Action<string> action = delegate (string s) { Console.WriteLine($"Hello ,{s}"); };
+                //action.Invoke("Nada"); 
+                #endregion
+                #region Lambda Expression C# 3.0 Feature
+                //Called {FatArrow } and read  goes to  
+                //Predicate<int> predicate = x => x > 0; 
+                //;
+                //predicate.Invoke(10);
+                //Func<int, string> func = x => x.ToString(); 
+                //func.Invoke(10);
+                //Action<string> action = s => Console.WriteLine($"Hello ,{s}"); 
+                //action.Invoke("Nada"); 
+                #endregion
 
-            #region New feature at delegate using Var keyword
-            ////var Keyword =>"Implicitly Typed Local Variable [C# 2.0]
-            //var predicate =  (int x)=> x > 0;
-            //predicate.Invoke(10);
-            //var  func =  (int x) => x.ToString(); 
-            //func.Invoke(10);
-            //var action =  (string s) =>Console.WriteLine($"Hello ,{s}"); 
-            //action.Invoke("Nada"); 
-            #endregion
-            #region Function take delegate as paramater
-            //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            ////List<int> OddNumbers = FindElements(Numbers, ConditionFunctions.IsOdd);
-            ////List<int>  OddNumbers = FindElements(Numbers, (x => x % 2 == 1));
-            //List<int> OddNumbers = Numbers.FindAll(x => x % 2 == 1);
-            //Numbers.Find(x => x % 2 == 1);//1
-            //Numbers.TrueForAll(x => x % 2 == 1);//No
-            //Numbers.FindLast(x => x % 2 == 1);//9
-            //Numbers.Exists(x => x % 2 == 1);
-            //Numbers.RemoveAll(x => x % 2 == 1);
+                #region New feature at delegate using Var keyword
+                ////var Keyword =>"Implicitly Typed Local Variable [C# 2.0]
+                //var predicate =  (int x)=> x > 0;
+                //predicate.Invoke(10);
+                //var  func =  (int x) => x.ToString(); 
+                //func.Invoke(10);
+                //var action =  (string s) =>Console.WriteLine($"Hello ,{s}"); 
+                //action.Invoke("Nada"); 
+                #endregion
+                #region Function take delegate as paramater
+                //List<int> Numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                ////List<int> OddNumbers = FindElements(Numbers, ConditionFunctions.IsOdd);
+                ////List<int>  OddNumbers = FindElements(Numbers, (x => x % 2 == 1));
+                //List<int> OddNumbers = Numbers.FindAll(x => x % 2 == 1);
+                //Numbers.Find(x => x % 2 == 1);//1
+                //Numbers.TrueForAll(x => x % 2 == 1);//No
+                //Numbers.FindLast(x => x % 2 == 1);//9
+                //Numbers.Exists(x => x % 2 == 1);
+                //Numbers.RemoveAll(x => x % 2 == 1);
 
-            //foreach (int number in OddNumbers)
-            //{
-            //    Console.WriteLine(number);
-            //} 
-            #endregion
+                //foreach (int number in OddNumbers)
+                //{
+                //    Console.WriteLine(number);
+                //} 
+                #endregion
+               // DelegateDoAction()();
 
-        }
+            }
     }
         class SomeFunctions
         {
