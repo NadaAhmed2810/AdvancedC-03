@@ -55,9 +55,11 @@ namespace Assignment
     }
     public class LibraryEngine
     {
-        public static void ProcessBooks(List<Book> bList, BookFunc fPtr)
+        // public static void ProcessBooks(List<Book> bList, BookFunc fPtr)
+        public static void ProcessBooks(List<Book> bList, Func<Book,string> fPtr)
+
         {
-            if(bList is not  null) 
+            if (bList is not  null) 
                 foreach (Book B in bList)
                 {
                     Console.WriteLine(fPtr(B));
