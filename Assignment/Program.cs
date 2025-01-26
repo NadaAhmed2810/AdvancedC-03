@@ -36,6 +36,13 @@ namespace Assignment
             //Book book = new Book("2002206", "Advanced Software", Authors, DateTime.Now, 500);
             //Console.WriteLine(func01.Invoke(book));
             #endregion
+            #region Lambda Expression (GetPublicationDate)
+            //Func<Book, string> func01 = book1 => book1?.PublicationDate.ToString() ?? " ";
+
+            //string[] Authors = ["Nada", "Noura", "Nour", "Radwa"];
+            //Book book = new Book("2002206", "Advanced Software", Authors, DateTime.Now, 500);
+            //Console.WriteLine(func01.Invoke(book));
+            #endregion
 
 
         }
