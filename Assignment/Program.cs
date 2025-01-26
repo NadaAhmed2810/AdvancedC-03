@@ -29,7 +29,13 @@ namespace Assignment
             //func01 = BookFunctions.GetAuthors;
             //Console.WriteLine(func01.Invoke(book));
             #endregion
+            #region Anonymous Method (GetISBN)
+            //Func<Book, string> func01 =delegate (Book book1){ return book1?.ISBN??" "; };
 
+            //string[] Authors = ["Nada", "Noura", "Nour", "Radwa"];
+            //Book book = new Book("2002206", "Advanced Software", Authors, DateTime.Now, 500);
+            //Console.WriteLine(func01.Invoke(book));
+            #endregion
 
 
         }
